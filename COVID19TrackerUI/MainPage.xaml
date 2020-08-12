@@ -5,10 +5,21 @@
     xmlns:local="using:COVID19TrackerUI"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:v="using:COVID19TrackerUI.Views"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <!-- Row 0 -->
+        <Grid Grid.Row="0">
+            <v:StatisticsView />
+            
+        </Grid>
         
     </Grid>
     
