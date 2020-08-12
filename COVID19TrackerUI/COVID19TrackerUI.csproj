@@ -126,6 +126,7 @@
     <Compile Include="Models\Statistics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Base\NotificationBase.cs" />
+    <Compile Include="ViewModels\StatisticsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
