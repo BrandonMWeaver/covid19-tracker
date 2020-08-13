@@ -54,6 +54,11 @@
         </ScrollViewer>
         
         <!-- Column 1 -->
+        <Border Grid.Column="1"
+                Grid.ColumnSpan="2"
+                BorderThickness="0 1 0 0"
+                BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" />
+        
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100" />
@@ -125,7 +130,9 @@
                            Text="{Binding CurrentStatus.Recovered}" />
                 
             </Grid>
+            
         </Grid>
+        
     </Grid>
     
 </UserControl>

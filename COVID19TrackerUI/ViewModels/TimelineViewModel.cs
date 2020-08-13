@@ -1,6 +1,5 @@
 ﻿using COVID19TrackerUI.Models;
 using COVID19TrackerUI.ViewModels.Base;
-using COVID19TrackerUI.ViewModels.Tools;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

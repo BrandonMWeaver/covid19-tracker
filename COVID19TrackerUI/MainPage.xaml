@@ -11,18 +11,25 @@
     
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
             <RowDefinition Height="100" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         
         <!-- Row 0 -->
         <Grid Grid.Row="0">
-            <v:StatusView />
+            <v:TimeView />
             
         </Grid>
         
         <!-- Row 1 -->
         <Grid Grid.Row="1">
+            <v:StatusView />
+            
+        </Grid>
+        
+        <!-- Row 2 -->
+        <Grid Grid.Row="2">
             <v:TimelineView />
             
         </Grid>

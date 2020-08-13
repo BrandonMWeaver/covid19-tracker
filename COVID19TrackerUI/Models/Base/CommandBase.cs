@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace COVID19TrackerUI.ViewModels.Base
+namespace COVID19TrackerUI.Models.Base
 {
     class CommandBase<T> : ICommand where T : class
     {

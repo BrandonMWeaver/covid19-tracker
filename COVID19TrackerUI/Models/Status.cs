@@ -1,4 +1,4 @@
-﻿using COVID19TrackerUI.ViewModels.Base;
+﻿using COVID19TrackerUI.Models.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
