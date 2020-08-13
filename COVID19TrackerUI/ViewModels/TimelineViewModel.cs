@@ -26,12 +26,34 @@ namespace COVID19TrackerUI.ViewModels
             }
         }
 
-        public TimelineViewModel()
+        private Status _currentStatus;
+
+        public Status CurrentStatus
         {
-            this.GetTimeline();
+            get { return this._currentStatus; }
+            set
+            {
+                this._currentStatus = value;
+                this.OnPropertyChanged(nameof(this.CurrentStatus));
+            }
         }
 
-        private async void GetTimeline()
+        public TimelineViewModel()
+        {
+            this.TimelineViewModelAsync(); 
+        }
+
+        private async void TimelineViewModelAsync()
+        {
+            await this.GetTimeline();
+            this.CurrentStatus = this.Timeline.Statuses.First();
+            foreach (Status status in this.Timeline.Statuses)
+            {
+                status.StatusSelected += this.OnStatusSelected;
+            }
+        }
+
+        private async Task GetTimeline()
         {
             using (HttpClient client = new HttpClient())
             {
@@ -44,6 +66,11 @@ namespace COVID19TrackerUI.ViewModels
                     Statuses = new List<Status>(JsonConvert.DeserializeObject<List<Status>>(pascalCaseFriendlyJson).Take(30))
                 };
             }
+        }
+
+        public void OnStatusSelected(object sender, EventArgs e)
+        {
+            this.CurrentStatus = (Status) sender;
         }
     }
 }

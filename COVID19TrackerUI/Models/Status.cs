@@ -1,4 +1,5 @@
-﻿using System;
+﻿using COVID19TrackerUI.ViewModels.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,6 +39,27 @@ namespace COVID19TrackerUI.Models
         {
             get { return int.Parse(this._recovered).ToString("N0"); }
             set { this._recovered = value; }
+        }
+
+        public CommandBase<object> StatusSelectedCommand { get; set; }
+
+        public delegate void StatusSelectedEventHandler(object sender, EventArgs e);
+
+        public event StatusSelectedEventHandler StatusSelected;
+
+        public Status()
+        {
+            this.StatusSelectedCommand = new CommandBase<object>(this.SelectStatus);
+        }
+
+        protected virtual void OnStatusSelected()
+        {
+            this.StatusSelected?.Invoke(this, null);
+        }
+
+        public void SelectStatus(object sender)
+        {
+            this.OnStatusSelected();
         }
     }
 }

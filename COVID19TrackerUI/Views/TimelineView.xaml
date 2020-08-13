@@ -6,6 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:COVID19TrackerUI.ViewModels"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -21,25 +23,28 @@
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
         
-        <ScrollViewer>
-            <ItemsControl Grid.Column="0"
-                          Margin="0 0 0 -5"
+        <!-- Column 0 -->
+        <ScrollViewer Grid.Column="0">
+            <ItemsControl Margin="0 0 0 -5"
                           ItemsSource="{Binding Timeline.Statuses}">
                 <ItemsControl.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate >
                         <StackPanel Margin="0 0 0 5">
                             <Border BorderThickness="0 0 1 0"
                                     BorderBrush="{StaticResource ApplicationForegroundThemeBrush}">
-                                <Button Grid.Column="0"
-                                        Margin="0 0 5 0"
+                                <Button Margin="0 0 5 0"
                                         Padding="5">
-                                    <TextBlock Grid.Column="0"
-                                               Margin="0 0 5 0"
+                                    <TextBlock Margin="0 0 5 0"
                                                HorizontalAlignment="Left"
                                                VerticalAlignment="Center"
                                                FontFamily="Consolas"
                                                FontSize="15"
                                                Text="{Binding LastUpdate}" />
+                                    <interactivity:Interaction.Behaviors>
+                                        <core:EventTriggerBehavior EventName="Click">
+                                            <core:InvokeCommandAction Command="{Binding StatusSelectedCommand}" />
+                                        </core:EventTriggerBehavior>
+                                    </interactivity:Interaction.Behaviors>
                                 </Button>
                             </Border>
                         </StackPanel>
@@ -48,6 +53,79 @@
             </ItemsControl>
         </ScrollViewer>
         
+        <!-- Column 1 -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            
+            <!-- Column 1 Row 0 -->
+            <TextBlock Grid.Row="0" HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontFamily="Consolas"
+                       FontSize="30"
+                       Text="{Binding CurrentStatus.LastUpdate}" />
+            
+            <!-- Column 1 Row 1 -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Column="0"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontFamily="Consolas"
+                           FontSize="15"
+                           Text="Cases" />
+                <TextBlock Grid.Column="1"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontFamily="Consolas"
+                           FontSize="15"
+                           Text="Deaths" />
+                <TextBlock Grid.Column="2"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontFamily="Consolas"
+                           FontSize="15"
+                           Text="Recovered" />
+                
+            </Grid>
+            
+            <!-- Column 1 Row 2 -->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Column="0"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontFamily="Consolas"
+                           FontSize="15"
+                           Text="{Binding CurrentStatus.Cases}" />
+                <TextBlock Grid.Column="1"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontFamily="Consolas"
+                           FontSize="15"
+                           Text="{Binding CurrentStatus.Deaths}" />
+                <TextBlock Grid.Column="2"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontFamily="Consolas"
+                           FontSize="15"
+                           Text="{Binding CurrentStatus.Recovered}" />
+                
+            </Grid>
+        </Grid>
     </Grid>
     
 </UserControl>
