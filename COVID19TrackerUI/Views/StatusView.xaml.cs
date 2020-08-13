@@ -17,9 +17,9 @@ using Windows.UI.Xaml.Navigation;
 
 namespace COVID19TrackerUI.Views
 {
-    public sealed partial class StatisticsView : UserControl
+    public sealed partial class StatusView : UserControl
     {
-        public StatisticsView()
+        public StatusView()
         {
             this.InitializeComponent();
         }

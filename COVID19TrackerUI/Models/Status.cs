@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace COVID19TrackerUI.Models
 {
-    class Response
+    class Status
     {
         private string _cases;
 

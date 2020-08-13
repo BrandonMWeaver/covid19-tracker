@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 
-namespace COVID19TrackerUI.Models
+namespace COVID19TrackerUI.ViewModels.Tools
 {
     class Clock
     {

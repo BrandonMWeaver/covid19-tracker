@@ -17,7 +17,7 @@
         
         <!-- Row 0 -->
         <Grid Grid.Row="0">
-            <v:StatisticsView />
+            <v:StatusView />
             
         </Grid>
         

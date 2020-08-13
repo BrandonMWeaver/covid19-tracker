@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="COVID19TrackerUI.Views.StatisticsView"
+    x:Class="COVID19TrackerUI.Views.StatusView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:COVID19TrackerUI.Views"
@@ -11,7 +11,7 @@
     d:DesignWidth="400">
     
     <UserControl.Resources>
-        <vm:StatisticsViewModel x:Key="ViewModel" />
+        <vm:StatusViewModel x:Key="ViewModel" />
     </UserControl.Resources>
     
     <Grid DataContext="{StaticResource ViewModel}">
@@ -26,7 +26,6 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             
             <!-- Row 0 Column 0 -->
@@ -34,31 +33,23 @@
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontFamily="Consolas"
-                       FontSize="10"
-                       Text="Current Time" />
+                       FontSize="15"
+                       Text="Cases" />
             
             <!-- Row 0 Column 1 -->
             <TextBlock Grid.Column="1"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontFamily="Consolas"
-                       FontSize="10"
-                       Text="Cases" />
+                       FontSize="15"
+                       Text="Deaths" />
             
             <!-- Row 0 Column 2 -->
             <TextBlock Grid.Column="2"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontFamily="Consolas"
-                       FontSize="10"
-                       Text="Deaths" />
-            
-            <!-- Row 0 Column 3 -->
-            <TextBlock Grid.Column="3"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       FontFamily="Consolas"
-                       FontSize="10"
+                       FontSize="15"
                        Text="Recovered" />
             
         </Grid>
@@ -69,7 +60,6 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             
             <!-- Row 1 Column 0 -->
@@ -77,32 +67,24 @@
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontFamily="Consolas"
-                       FontSize="10"
-                       Text="{Binding CurrentTime}" />
+                       FontSize="15"
+                       Text="{Binding Status.Cases}" />
             
             <!-- Row 1 Column 1 -->
             <TextBlock Grid.Column="1"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontFamily="Consolas"
-                       FontSize="10"
-                       Text="{Binding Statistics.Response.Cases}" />
+                       FontSize="15"
+                       Text="{Binding Status.Deaths}" />
             
             <!-- Row 1 Column 2 -->
             <TextBlock Grid.Column="2"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontFamily="Consolas"
-                       FontSize="10"
-                       Text="{Binding Statistics.Response.Deaths}" />
-            
-            <!-- Row 1 Column 3 -->
-            <TextBlock Grid.Column="3"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       FontFamily="Consolas"
-                       FontSize="10"
-                       Text="{Binding Statistics.Response.Recovered}" />
+                       FontSize="15"
+                       Text="{Binding Status.Recovered}" />
             
         </Grid>
         
