@@ -1,8 +1,10 @@
 ﻿using COVID19TrackerUI.Models;
 using COVID19TrackerUI.ViewModels.Base;
+using COVID19TrackerUI.ViewModels.Tools;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -36,9 +38,10 @@ namespace COVID19TrackerUI.ViewModels
                 HttpResponseMessage responseMessage = await client.GetAsync("https://covid19-api.org/api/timeline/us");
                 responseMessage.EnsureSuccessStatusCode();
                 string json = await responseMessage.Content.ReadAsStringAsync();
+                string pascalCaseFriendlyJson = string.Join(string.Empty, json.Split('_'));
                 this.Timeline = new Timeline()
                 {
-                    Statuses = JsonConvert.DeserializeObject<List<Status>>(json)
+                    Statuses = new List<Status>(JsonConvert.DeserializeObject<List<Status>>(pascalCaseFriendlyJson).Take(30))
                 };
             }
         }

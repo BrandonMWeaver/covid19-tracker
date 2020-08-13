@@ -24,6 +24,14 @@ namespace COVID19TrackerUI.Models
             set { this._deaths = value; }
         }
 
+        private string _lastUpdate;
+
+        public string LastUpdate
+        {
+            get { return string.Join(" - ", this._lastUpdate.Split('T')[0].Split('-')); }
+            set { this._lastUpdate = value; }
+        }
+
         private string _recovered;
 
         public string Recovered
