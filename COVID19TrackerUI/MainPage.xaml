@@ -21,6 +21,12 @@
             
         </Grid>
         
+        <!-- Row 1 -->
+        <Grid Grid.Row="1">
+            <v:TimelineView />
+            
+        </Grid>
+        
     </Grid>
     
 </Page>

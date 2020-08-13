@@ -122,6 +122,8 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Timeline.cs" />
+    <Compile Include="ViewModels\TimelineViewModel.cs" />
     <Compile Include="ViewModels\Tools\Clock.cs" />
     <Compile Include="Models\Status.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -129,6 +131,9 @@
     <Compile Include="ViewModels\StatusViewModel.cs" />
     <Compile Include="Views\StatusView.xaml.cs">
       <DependentUpon>StatusView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TimelineView.xaml.cs">
+      <DependentUpon>TimelineView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +161,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\StatusView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TimelineView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
