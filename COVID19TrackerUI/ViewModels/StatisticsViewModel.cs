@@ -1,8 +1,10 @@
 ﻿using COVID19TrackerUI.Models;
 using COVID19TrackerUI.ViewModels.Base;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -37,11 +39,38 @@ namespace COVID19TrackerUI.ViewModels
         public StatisticsViewModel()
         {
             new Clock(this.GetCurrentTime_Tick, 1000);
+            new Clock(this.GetStatistics_Tick, 60000);
+            this.GetCurrentTime();
+            this.GetStatistics();
+        }
+
+        private void GetCurrentTime()
+        {
+            this.CurrentTime = DateTime.Now.ToString("g");
+        }
+
+        private async void GetStatistics()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage responseMessage = await client.GetAsync($"https://covid19-api.org/api/status/us");
+                responseMessage.EnsureSuccessStatusCode();
+                string json = await responseMessage.Content.ReadAsStringAsync();
+                this.Statistics = new Statistics
+                {
+                    Response = JsonConvert.DeserializeObject<Response>(json)
+                };
+            }
         }
 
         private void GetCurrentTime_Tick(object sender, object e)
         {
-            this.CurrentTime = DateTime.Now.ToString("g");
+            this.GetCurrentTime();
+        }
+
+        private void GetStatistics_Tick(object sender, object e)
+        {
+            this.GetStatistics();
         }
     }
 }

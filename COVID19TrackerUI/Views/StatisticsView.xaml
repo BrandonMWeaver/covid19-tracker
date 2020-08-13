@@ -37,6 +37,30 @@
                        FontSize="10"
                        Text="Current Time" />
             
+            <!-- Row 0 Column 1 -->
+            <TextBlock Grid.Column="1"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontFamily="Consolas"
+                       FontSize="10"
+                       Text="Cases" />
+            
+            <!-- Row 0 Column 2 -->
+            <TextBlock Grid.Column="2"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontFamily="Consolas"
+                       FontSize="10"
+                       Text="Deaths" />
+            
+            <!-- Row 0 Column 3 -->
+            <TextBlock Grid.Column="3"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontFamily="Consolas"
+                       FontSize="10"
+                       Text="Recovered" />
+            
         </Grid>
         
         <!-- Row 1 -->
@@ -55,6 +79,30 @@
                        FontFamily="Consolas"
                        FontSize="10"
                        Text="{Binding CurrentTime}" />
+            
+            <!-- Row 1 Column 1 -->
+            <TextBlock Grid.Column="1"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontFamily="Consolas"
+                       FontSize="10"
+                       Text="{Binding Statistics.Response.Cases}" />
+            
+            <!-- Row 1 Column 2 -->
+            <TextBlock Grid.Column="2"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontFamily="Consolas"
+                       FontSize="10"
+                       Text="{Binding Statistics.Response.Deaths}" />
+            
+            <!-- Row 1 Column 3 -->
+            <TextBlock Grid.Column="3"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontFamily="Consolas"
+                       FontSize="10"
+                       Text="{Binding Statistics.Response.Recovered}" />
             
         </Grid>
         
