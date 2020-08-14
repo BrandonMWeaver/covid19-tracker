@@ -1,5 +1,4 @@
-﻿using COVID19TrackerUI.Models;
-using COVID19TrackerUI.ViewModels.Base;
+﻿using COVID19TrackerUI.ViewModels.Base;
 using COVID19TrackerUI.ViewModels.Tools;
 using System;
 using System.Collections.Generic;
@@ -11,9 +10,9 @@ namespace COVID19TrackerUI.ViewModels
 {
     class TimeViewModel : NotificationBase
     {
-        private Time _time;
+        private string _time;
 
-        public Time Time
+        public string Time
         {
             get { return this._time; }
             set
@@ -25,16 +24,13 @@ namespace COVID19TrackerUI.ViewModels
 
         public TimeViewModel()
         {
-            this.Time = new Time()
-            {
-                Current = DateTime.Now.ToString("g")
-            };
+            this.Time = DateTime.Now.ToString("g");
             new Clock(this.GetCurrentTime_Tick, 1000);
         }
 
         private void GetCurrentTime()
         {
-            this.Time.Current = DateTime.Now.ToString("g");
+            this.Time = DateTime.Now.ToString("g");
         }
 
         private void GetCurrentTime_Tick(object sender, object e)

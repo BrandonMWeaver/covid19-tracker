@@ -122,7 +122,6 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Time.cs" />
     <Compile Include="Models\Timeline.cs" />
     <Compile Include="Models\Base\CommandBase.cs" />
     <Compile Include="ViewModels\TimelineViewModel.cs" />
@@ -132,6 +131,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Base\NotificationBase.cs" />
     <Compile Include="ViewModels\StatusViewModel.cs" />
+    <Compile Include="ViewModels\Tools\MathHelper.cs" />
     <Compile Include="Views\StatusView.xaml.cs">
       <DependentUpon>StatusView.xaml</DependentUpon>
     </Compile>

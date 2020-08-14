@@ -64,6 +64,7 @@
                 <RowDefinition Height="100" />
                 <RowDefinition Height="50" />
                 <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
             </Grid.RowDefinitions>
             
             <!-- Column 1 Row 0 -->
@@ -128,6 +129,35 @@
                            FontFamily="Consolas"
                            FontSize="15"
                            Text="{Binding CurrentStatus.Recovered}" />
+                
+            </Grid>
+            
+            <!-- Column 1 Row 3 -->
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Column="0"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontFamily="Consolas"
+                           FontSize="30"
+                           Text="{Binding Percentages[0]}" />
+                <TextBlock Grid.Column="1"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontFamily="Consolas"
+                           FontSize="30"
+                           Text="{Binding Percentages[1]}" />
+                <TextBlock Grid.Column="2"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontFamily="Consolas"
+                           FontSize="30"
+                           Text="{Binding Percentages[2]}" />
                 
             </Grid>
             

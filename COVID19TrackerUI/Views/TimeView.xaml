@@ -19,7 +19,7 @@
                    VerticalAlignment="Center"
                    FontFamily="Consolas"
                    FontSize="15"
-                   Text="{Binding Time.Current}" />
+                   Text="{Binding Time}" />
         
     </Grid>
     
