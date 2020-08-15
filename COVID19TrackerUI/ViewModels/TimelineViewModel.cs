@@ -59,12 +59,7 @@ namespace COVID19TrackerUI.ViewModels
         {
             await this.GetTimelineAsync();
             this.CurrentStatus = this.Timeline.Statuses.Last();
-            this.Percentages = new ObservableCollection<string>()
-            {
-                "%0.00",
-                "%0.00",
-                "%0.00"
-            };
+            this.GetPercentages();
             foreach (Status status in this.Timeline.Statuses)
             {
                 status.StatusSelected += this.OnStatusSelected;
@@ -81,23 +76,34 @@ namespace COVID19TrackerUI.ViewModels
                 string pascalCaseFriendlyJson = string.Join(string.Empty, json.Split('_'));
                 this.Timeline = new Timeline()
                 {
-                    Statuses = new List<Status>(JsonConvert.DeserializeObject<List<Status>>(pascalCaseFriendlyJson).Take(30))
+                    Statuses = new List<Status>(JsonConvert.DeserializeObject<List<Status>>(pascalCaseFriendlyJson).Take(90))
                 };
             }
+        }
+
+        public void GetPercentages()
+        {
+            double casesMax = StringHelper.DoubleFromCommaSeparatedString(this.Timeline.Statuses.First().Cases);
+            double deathsMax = StringHelper.DoubleFromCommaSeparatedString(this.Timeline.Statuses.First().Deaths);
+            double recoveredMax = StringHelper.DoubleFromCommaSeparatedString(this.Timeline.Statuses.First().Recovered);
+            double casesCurrent = StringHelper.DoubleFromCommaSeparatedString(this.CurrentStatus.Cases);
+            double deathsCurrent = StringHelper.DoubleFromCommaSeparatedString(this.CurrentStatus.Deaths);
+            double recoveredCurrent = StringHelper.DoubleFromCommaSeparatedString(this.CurrentStatus.Recovered);
+            string casesPercentage = $"%{Math.Abs((casesCurrent - casesMax) * 100 / casesCurrent):0.00}";
+            string deathsPercentage = $"%{Math.Abs((deathsCurrent - deathsMax) * 100 / deathsCurrent):0.00}";
+            string recoveredPercentage = $"%{Math.Abs((recoveredCurrent - recoveredMax) * 100 / recoveredCurrent):0.00}";
+            this.Percentages = new ObservableCollection<string>()
+            {
+                casesCurrent == 0 ? "NA" : casesPercentage,
+                deathsCurrent == 0 ? "NA" : deathsPercentage,
+                recoveredCurrent == 0 ? "NA" : recoveredPercentage
+            };
         }
 
         public void OnStatusSelected(object sender, EventArgs e)
         {
             this.CurrentStatus = (Status) sender;
-            double casesMax = StringHelper.DoubleFromCommaSeparatedString(this.Timeline.Statuses.First().Cases);
-            double deathsMax = StringHelper.DoubleFromCommaSeparatedString(this.Timeline.Statuses.First().Deaths);
-            double recoveredMax = StringHelper.DoubleFromCommaSeparatedString(this.Timeline.Statuses.First().Recovered);
-            double casesDifference = casesMax - StringHelper.DoubleFromCommaSeparatedString(this.CurrentStatus.Cases);
-            double deathsDifference = deathsMax - StringHelper.DoubleFromCommaSeparatedString(this.CurrentStatus.Deaths);
-            double recoveredDifference = recoveredMax - StringHelper.DoubleFromCommaSeparatedString(this.CurrentStatus.Recovered);
-            this.Percentages[0] = $"%{casesDifference / casesMax * 100:0.00}";
-            this.Percentages[1] = $"%{deathsDifference / deathsMax * 100:0.00}";
-            this.Percentages[2] = $"%{recoveredDifference / recoveredMax * 100:0.00}";
+            this.GetPercentages();
         }
     }
 }
